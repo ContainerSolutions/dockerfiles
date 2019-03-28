@@ -11,6 +11,9 @@ RUN curl -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 >
     chmod +x /usr/local/bin/jq
 
 # Install python3 requests
-RUN pip3 install requests
+RUN apt-get update && \
+    apt-get -y install --no-install-recommends python3-pip && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip3 install requests
 
 LABEL maintainer="Simone Esposito <simone.esposito@container-solutions.com>"
