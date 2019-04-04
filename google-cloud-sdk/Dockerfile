@@ -16,4 +16,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     pip3 install requests
 
+# Install kustomize
+RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/v2.0.3/kustomize_2.0.3_linux_amd64 > /usr/local/bin/kustomize && \
+    chmod +x /usr/local/bin/kustomize
+
 LABEL maintainer="Simone Esposito <simone.esposito@container-solutions.com>"
