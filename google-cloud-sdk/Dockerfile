@@ -20,4 +20,15 @@ RUN apt-get update && \
 RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/v2.0.3/kustomize_2.0.3_linux_amd64 > /usr/local/bin/kustomize && \
     chmod +x /usr/local/bin/kustomize
 
+# Install cft
+RUN apt-get update && apt-get -y install --no-install-recommends make && \
+    rm -rf /var/lib/apt/lists/* && \
+    git clone https://github.com/GoogleCloudPlatform/deploymentmanager-samples && \
+    cd deploymentmanager-samples/community/cloud-foundation && \
+    make prerequisites && \
+    make build && \
+    make install && \
+    cd / && \
+    rm -rf deploymentmanager-samples/
+
 LABEL maintainer="Simone Esposito <simone.esposito@container-solutions.com>"
