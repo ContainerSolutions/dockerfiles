@@ -31,4 +31,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends make && \
     cd / && \
     rm -rf deploymentmanager-samples/
 
+# Install mozilla/sops
+RUN curl -L https://github.com/mozilla/sops/releases/download/3.3.0/sops-3.3.0.linux > /usr/local/bin/sops && \
+    chmod +x /usr/local/bin/sops
+
 LABEL maintainer="Simone Esposito <simone.esposito@container-solutions.com>"
