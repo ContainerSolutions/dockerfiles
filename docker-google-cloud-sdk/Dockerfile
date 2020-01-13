@@ -1,2 +1,3 @@
 FROM google/cloud-sdk:alpine
-RUN apk add docker make curl python3 bash
+RUN gcloud components install kubectl && \
+    apk add docker make curl python3 bash
